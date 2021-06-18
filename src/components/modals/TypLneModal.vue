@@ -38,6 +38,8 @@
 <script lang="ts">
 export default {
   template: 'typlnemodal',
+
+  emits: ['closeModal'],
 };
 </script>
 

@@ -10,6 +10,8 @@
 export default {
   template: 'typlnecontent',
 
+  emits: ['openModal'],
+
   // TODO: Missing return type
   data() {
     // TODO: Get content from backend
