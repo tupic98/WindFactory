@@ -6,11 +6,11 @@
 
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component';
-import TypesTable from '@/components/TypesTable.vue'; // @ is an alias to /src
+import TypesGrid from '@/components/TypesGrid.vue'; // @ is an alias to /src
 
 @Options({
   components: {
-    TypesTable,
+    TypesGrid,
   },
 })
 export default class Home extends Vue {}

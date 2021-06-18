@@ -17,7 +17,7 @@
   </div>
 </template>
 
-<script lang="ts">
+<script>
 import TypLneHeader from './grid-headers/TypLneHeader.vue';
 import TypLneContent from './grid-content/TypLneContent.vue';
 import TypLneModal from './modals/TypLneModal.vue';
@@ -38,10 +38,10 @@ export default {
   },
 
   methods: {
-    openModal(): void {
+    openModal() {
       this.isModalOpen = true;
     },
-    closeModal(): void {
+    closeModal() {
       this.isModalOpen = false;
     },
   },
