@@ -40,17 +40,12 @@
               <div class="space-y-6 md:space-y-5">
                 <div class="md:grid md:grid-cols-4 md:gap-4 md:items-start md:border-t md:border-gray-200 md:pt-5">
                   <div class="md:col-span-2 md:grid md:grid-cols-3 md:gap-4 md:items-start">
-                    <label for="Inom" class="block text-sm font-medium text-gray-700 md:mt-px md:pt-2">
-                      Rated Current
+                    <label for="loc_name" class="block text-sm font-medium text-gray-700 md:mt-px md:pt-2">
+                      Name
                     </label>
                     <div class="mt-1 sm:mt-0 sm:col-span-2">
                       <div class="mt-1 relative rounded-md shadow-sm max-w-xs">
-                        <input v-model="context.form.Inom" type="text" name="Inom" id="Inom" class="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
-                        <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
-                          <span class="text-gray-500 sm:text-sm">
-                            kA
-                          </span>
-                        </div>
+                        <input v-model="context.form.loc_name" type="text" name="loc_name" id="loc_name" class="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
                       </div>
                     </div>
                   </div>
@@ -59,12 +54,26 @@
               <div class="space-y-6 md:space-y-5">
                 <div class="md:grid md:grid-cols-4 md:gap-4 md:items-start md:border-t md:border-gray-200 md:pt-5">
                   <div class="md:col-span-2 md:grid md:grid-cols-3 md:gap-4 md:items-start">
-                    <label for="Inom" class="block text-sm font-medium text-gray-700 md:mt-px md:pt-2">
-                      Rated Current
+                    <label for="systp" class="block text-sm font-medium text-gray-700 md:mt-px md:pt-2">
+                      System Type
                     </label>
                     <div class="mt-1 sm:mt-0 sm:col-span-2">
                       <div class="mt-1 relative rounded-md shadow-sm max-w-xs">
-                        <custom-select v-model="context.form.systp" name="Inom" :items="context.systemTypes" />
+                        <custom-select v-model="context.form.systp" name="systp" :items="context.systemTypes" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="space-y-6 md:space-y-5">
+                <div class="md:grid md:grid-cols-4 md:gap-4 md:items-start md:border-t md:border-gray-200 md:pt-5">
+                  <div class="md:col-span-2 md:grid md:grid-cols-3 md:gap-4 md:items-start">
+                    <label for="phtech" class="block text-sm font-medium text-gray-700 md:mt-px md:pt-2">
+                      Technology
+                    </label>
+                    <div class="mt-1 sm:mt-0 sm:col-span-2">
+                      <div class="mt-1 relative rounded-md shadow-sm max-w-xs">
+                        <custom-select v-model="context.form.phtech" name="phtech" :items="context.techonologies" />
                       </div>
                     </div>
                   </div>
@@ -77,10 +86,11 @@
       <div v-show="context.selectedTab === 'load-flow'" class="pt-6 text-left">
         <div class="space-y-8 divide-y divide-gray-200">
           <div class="space-y-8 divide-y divide-gray-200 sm:space-y-5">
+            <!-- Voltage Dependece P -->
             <div class="pt-8 space-y-6 sm:pt-10 sm:space-y-5">
               <div>
                 <h3 class="text-lg leading-6 font-medium text-gray-900">
-                  Load Flow
+                  Voltage Dependece P
                 </h3>
                 <!-- <p class="mt-1 max-w-2xl text-sm text-gray-500">
                   Use a permanent address where you can receive mail.
@@ -89,17 +99,22 @@
               <div class="space-y-6 md:space-y-5">
                 <div class="md:grid md:grid-cols-4 md:gap-4 md:items-start md:border-t md:border-gray-200 md:pt-5">
                   <div class="md:col-span-2 md:grid md:grid-cols-3 md:gap-4 md:items-start">
-                    <label for="R_on" class="block text-sm font-medium text-gray-700 md:mt-px md:pt-2">
-                      On - Resistance
+                    <label for="aP" class="block text-sm font-medium text-gray-700 md:mt-px md:pt-2">
+                      Coefficient aP
                     </label>
                     <div class="mt-1 sm:mt-0 sm:col-span-2">
                       <div class="mt-1 relative rounded-md shadow-sm max-w-xs">
-                        <input v-model="context.form.R_on" type="text" name="R_on" id="R_on" class="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
-                        <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
-                          <span class="text-gray-500 sm:text-sm">
-                            Ohm
-                          </span>
-                        </div>
+                        <input v-model="context.form.aP" type="text" name="aP" id="aP" class="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="mt-4 md:mt-0 md:col-span-2 md:grid md:grid-cols-3 md:gap-4 md:items-start">
+                    <label for="kpu0" class="block text-sm font-medium text-gray-700 md:mt-px md:pt-2">
+                      Exponent e_aP
+                    </label>
+                    <div class="mt-1 sm:mt-0 sm:col-span-2">
+                      <div class="mt-1 relative rounded-md shadow-sm max-w-xs">
+                        <input v-model="context.form.kpu0" type="text" name="kpu0" id="kpu0" class="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
                       </div>
                     </div>
                   </div>
@@ -108,17 +123,113 @@
               <div class="space-y-6 md:space-y-5">
                 <div class="md:grid md:grid-cols-4 md:gap-4 md:items-start md:border-t md:border-gray-200 md:pt-5">
                   <div class="md:col-span-2 md:grid md:grid-cols-3 md:gap-4 md:items-start">
-                    <label for="X_on" class="block text-sm font-medium text-gray-700 md:mt-px md:pt-2">
-                      On - Reactance
+                    <label for="bP" class="block text-sm font-medium text-gray-700 md:mt-px md:pt-2">
+                      Coefficient bP
                     </label>
-                    <div class="mt-1 sm:mt-0 sm:col-span-2 relative">
+                    <div class="mt-1 sm:mt-0 sm:col-span-2">
                       <div class="mt-1 relative rounded-md shadow-sm max-w-xs">
-                        <input v-model="context.form.X_on" type="text" name="X_on" id="X_on" class="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
-                        <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
-                          <span class="text-gray-500 sm:text-sm">
-                            Ohm
-                          </span>
-                        </div>
+                        <input v-model="context.form.bP" type="text" name="bP" id="bP" class="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="mt-4 md:mt-0 md:col-span-2 md:grid md:grid-cols-3 md:gap-4 md:items-start">
+                    <label for="kpu1" class="block text-sm font-medium text-gray-700 md:mt-px md:pt-2">
+                      Exponent e_bP
+                    </label>
+                    <div class="mt-1 sm:mt-0 sm:col-span-2">
+                      <div class="mt-1 relative rounded-md shadow-sm max-w-xs">
+                        <input v-model="context.form.kpu1" type="text" name="kpu1" id="kpu1" class="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="space-y-6 md:space-y-5">
+                <div class="md:grid md:grid-cols-4 md:gap-4 md:items-start md:border-t md:border-gray-200 md:pt-5">
+                  <div class="md:col-span-2 md:grid md:grid-cols-3 md:gap-4 md:items-start">
+                  </div>
+                  <div class="mt-4 md:mt-0 md:col-span-2 md:grid md:grid-cols-3 md:gap-4 md:items-start">
+                    <label for="kpu" class="block text-sm font-medium text-gray-700 md:mt-px md:pt-2">
+                      Exponent e_cP
+                    </label>
+                    <div class="mt-1 sm:mt-0 sm:col-span-2">
+                      <div class="mt-1 relative rounded-md shadow-sm max-w-xs">
+                        <input v-model="context.form.kpu" type="text" name="kpu" id="kpu" class="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Voltage Dependece of Q -->
+            <div class="pt-8 space-y-6 sm:pt-10 sm:space-y-5">
+              <div>
+                <h3 class="text-lg leading-6 font-medium text-gray-900">
+                  Voltage Dependece P
+                </h3>
+                <!-- <p class="mt-1 max-w-2xl text-sm text-gray-500">
+                  Use a permanent address where you can receive mail.
+                </p> -->
+              </div>
+              <div class="space-y-6 md:space-y-5">
+                <div class="md:grid md:grid-cols-4 md:gap-4 md:items-start md:border-t md:border-gray-200 md:pt-5">
+                  <div class="md:col-span-2 md:grid md:grid-cols-3 md:gap-4 md:items-start">
+                    <label for="aQ" class="block text-sm font-medium text-gray-700 md:mt-px md:pt-2">
+                      Coefficient aQ
+                    </label>
+                    <div class="mt-1 sm:mt-0 sm:col-span-2">
+                      <div class="mt-1 relative rounded-md shadow-sm max-w-xs">
+                        <input v-model="context.form.aQ" type="text" name="aQ" id="aQ" class="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="mt-4 md:mt-0 md:col-span-2 md:grid md:grid-cols-3 md:gap-4 md:items-start">
+                    <label for="kqu0" class="block text-sm font-medium text-gray-700 md:mt-px md:pt-2">
+                      Exponent e_aQ
+                    </label>
+                    <div class="mt-1 sm:mt-0 sm:col-span-2">
+                      <div class="mt-1 relative rounded-md shadow-sm max-w-xs">
+                        <input v-model="context.form.kqu0" type="text" name="kqu0" id="kqu0" class="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="space-y-6 md:space-y-5">
+                <div class="md:grid md:grid-cols-4 md:gap-4 md:items-start md:border-t md:border-gray-200 md:pt-5">
+                  <div class="md:col-span-2 md:grid md:grid-cols-3 md:gap-4 md:items-start">
+                    <label for="bQ" class="block text-sm font-medium text-gray-700 md:mt-px md:pt-2">
+                      Coefficient bQ
+                    </label>
+                    <div class="mt-1 sm:mt-0 sm:col-span-2">
+                      <div class="mt-1 relative rounded-md shadow-sm max-w-xs">
+                        <input v-model="context.form.bQ" type="text" name="bQ" id="bQ" class="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="mt-4 md:mt-0 md:col-span-2 md:grid md:grid-cols-3 md:gap-4 md:items-start">
+                    <label for="kqu1" class="block text-sm font-medium text-gray-700 md:mt-px md:pt-2">
+                      Exponent e_bQ
+                    </label>
+                    <div class="mt-1 sm:mt-0 sm:col-span-2">
+                      <div class="mt-1 relative rounded-md shadow-sm max-w-xs">
+                        <input v-model="context.form.kqu1" type="text" name="kqu1" id="kqu1" class="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="space-y-6 md:space-y-5">
+                <div class="md:grid md:grid-cols-4 md:gap-4 md:items-start md:border-t md:border-gray-200 md:pt-5">
+                  <div class="md:col-span-2 md:grid md:grid-cols-3 md:gap-4 md:items-start">
+                  </div>
+                  <div class="mt-4 md:mt-0 md:col-span-2 md:grid md:grid-cols-3 md:gap-4 md:items-start">
+                    <label for="kqu" class="block text-sm font-medium text-gray-700 md:mt-px md:pt-2">
+                      Exponent e_cQ
+                    </label>
+                    <div class="mt-1 sm:mt-0 sm:col-span-2">
+                      <div class="mt-1 relative rounded-md shadow-sm max-w-xs">
+                        <input v-model="context.form.kqu" type="text" name="kqu" id="kqu" class="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
                       </div>
                     </div>
                   </div>
@@ -156,7 +267,7 @@ const useContext = () => {
     form: {
       loc_name: '',
       systp: 0,
-      phtech: '',
+      phtech: 0,
       aP: '',
       bP: '',
       kpu0: '',
