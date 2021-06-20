@@ -12,7 +12,7 @@
           </svg>
         </span>
       </button>
-      <ul v-show="context.show" class="absolute z-20 mt-1 w-full bg-white shadow-lg max-h-60 rounded-md py-1 text-base ring-1 ring-black ring-opacity-5 overflow-auto focus:outline-none sm:text-sm" tabindex="-1" role="listbox" :aria-labelledby="name" aria-activedescendant="listbox-option-3">
+      <ul v-if="context.show" v-click-away="onClickOutside" class="absolute z-20 mt-1 w-full bg-white shadow-lg max-h-60 rounded-md py-1 text-base ring-1 ring-black ring-opacity-5 overflow-auto focus:outline-none sm:text-sm" tabindex="-1" role="listbox" :aria-labelledby="name" aria-activedescendant="listbox-option-3">
         <!--
           Select option, manage highlight styles based on mouseenter/mouseleave and keyboard navigation.
 
@@ -47,7 +47,7 @@ import {
   Options, Vue, prop, setup,
 } from 'vue-class-component';
 import {
-  PropType, defineEmit, toRefs, reactive,
+  PropType, toRefs, reactive,
 } from 'vue';
 
 interface Item {
@@ -91,6 +91,9 @@ const useContext = () => {
   methods: {
     updateValue(value: number) {
       this.$emit('update:modelValue', value);
+      this.context.show = false;
+    },
+    onClickOutside() {
       this.context.show = false;
     },
   },
