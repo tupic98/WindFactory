@@ -21,7 +21,7 @@
             <section aria-labelledby="section-1-title">
               <div class="rounded-lg bg-white overflow-visible shadow">
                 <div class="p-6">
-                  <component :is="`TypLod`"></component>
+                  <component :is="`TypLne`"></component>
                 </div>
               </div>
             </section>
@@ -35,11 +35,13 @@
 import { Options, Vue } from 'vue-class-component';
 import TypSwitch from '@/components/TypesForm/TypSwitch.vue';
 import TypLod from '@/components/TypesForm/TypLod.vue';
+import TypLne from '@/components/TypesForm/TypLne.vue';
 
 @Options({
   components: {
     TypSwitch,
     TypLod,
+    TypLne,
   },
 })
 export default class TypesForm extends Vue {
