@@ -17,6 +17,16 @@ const routes: Array<RouteRecordRaw> = [
     name: 'EditTypes',
     component: () => import(/* webpackChunkName: "edit-types" */ '../views/Types/Edit.vue'),
   },
+  {
+    path: '/tipos/import',
+    name: 'ImportTypes',
+    component: () => import(/* webpackChunkName: "import-types" */ '../views/Types/Import.vue'),
+  },
+  {
+    path: '/convertir',
+    name: 'ConvertSTD',
+    component: () => import(/* webpackChunkName: "convert-std" */ '../views/Convert/Index.vue'),
+  },
 ];
 
 const router = createRouter({

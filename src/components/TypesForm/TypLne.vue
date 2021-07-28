@@ -40,7 +40,7 @@
               <div class="space-y-6 md:space-y-5">
                 <div class="md:grid md:grid-cols-4 md:gap-4 md:items-start md:border-t md:border-gray-200 md:pt-5">
                   <div class="md:col-span-2 md:grid md:grid-cols-3 md:gap-4 md:items-start">
-                    <label for="loc_name" class="block text-sm font-medium text-gray-700 md:mt-px md:pt-2">
+                    <label for="loc_name" aria-readonly="readonly" class="block text-sm font-medium text-gray-700 md:mt-px md:pt-2">
                       Name
                     </label>
                     <div class="mt-1 sm:mt-0 sm:col-span-2">
@@ -172,7 +172,7 @@
                     </label>
                     <div class="mt-1 sm:mt-0 sm:col-span-2">
                       <div class="mt-1 relative rounded-md shadow-sm max-w-xs">
-                        <input v-model="context.form.rline" type="text" name="rline" id="rline" class="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
+                        <input v-model="context.form.rline" type="number" name="rline" id="rline" class="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
                         <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
                           <span class="text-gray-500 sm:text-sm">
                             Ohm/km
@@ -520,12 +520,45 @@
   </div>
 </template>
 <script lang="ts">
-import { Options, Vue, setup } from 'vue-class-component';
+import {
+  Options, Vue, setup, prop,
+} from 'vue-class-component';
 import { toRefs, reactive } from 'vue';
 import CustomSelect from '@/components/CustomSelect.vue';
+import { TypesListU } from '../Types/Types';
 
 interface State {
   selectedTab: string;
+}
+
+class Props {
+  value = prop({
+    type: Object,
+    default: () => ({
+      loc_name: '',
+      uline: '',
+      sline: '',
+      cohl_: '0',
+      systp: '0',
+      nlnph: '0',
+      nneutral: '0',
+      frnom: '',
+      rline: 0,
+      xline: '',
+      rline0: '',
+      xline0: '',
+      rnline: '',
+      xnline: '',
+      rpnlabel: '',
+      xpnline: '',
+      tmax: '',
+      mlei: 'Al',
+      bline: '',
+      tline: '',
+      bnline: '',
+      bpnline: '',
+    }),
+  })
 }
 
 const useContext = () => {
@@ -535,12 +568,12 @@ const useContext = () => {
       loc_name: '',
       uline: '',
       sline: '',
-      cohl_: 0,
-      systp: 0,
-      nlnph: 0,
-      nneutral: 0,
+      cohl_: '0',
+      systp: '0',
+      nlnph: '0',
+      nneutral: '0',
       frnom: '',
-      rline: '',
+      rline: 0,
       xline: '',
       rline0: '',
       xline0: '',
@@ -549,7 +582,7 @@ const useContext = () => {
       rpnlabel: '',
       xpnline: '',
       tmax: '',
-      mlei: 0,
+      mlei: 'Al',
       bline: '',
       tline: '',
       bnline: '',
@@ -557,47 +590,55 @@ const useContext = () => {
     },
     systemTypes: [
       {
-        value: 0,
+        value: '0',
         name: 'Copper',
       },
     ],
     materials: [
       {
-        value: 0,
-        name: 'Copper',
+        value: 'As',
+        name: 'ACSR',
+      },
+      {
+        value: 'Al',
+        name: 'Aluminio',
+      },
+      {
+        value: 'Cu',
+        name: 'Cobre',
       },
     ],
     cableTypes: [
       {
-        value: 0,
+        value: '0',
         name: 'Cable',
       },
       {
-        value: 1,
+        value: '1',
         name: 'Overhead Line',
       },
     ],
     phases: [
       {
-        value: 0,
+        value: '0',
         name: '1',
       },
       {
-        value: 1,
+        value: '1',
         name: '2',
       },
       {
-        value: 2,
+        value: '2',
         name: '3',
       },
     ],
     numberOfNeutrals: [
       {
-        value: 0,
+        value: '0',
         name: '0',
       },
       {
-        value: 1,
+        value: '1',
         name: '1',
       },
     ],
@@ -613,7 +654,23 @@ const useContext = () => {
     CustomSelect,
   },
 })
-export default class TypLne extends Vue {
-  context = setup(() => useContext())
+export default class TypLne extends Vue.with(Props) {
+  context = setup(() => useContext());
+
+  mounted(): void {
+    const newForm = JSON.parse(JSON.stringify(this.value));
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    this.context.form = {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      ...this.context.form,
+      ...Object.keys(newForm).reduce((acc: any, key: string) => {
+        const newKey = key.split('(').shift() || '';
+        acc[newKey] = newForm[key as keyof TypesListU] === -1 ? '0' : newForm[key as keyof TypesListU];
+        return acc;
+      }, {}),
+    };
+  }
 }
 </script>

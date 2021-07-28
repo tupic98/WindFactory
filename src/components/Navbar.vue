@@ -23,10 +23,24 @@
         </h3>
         <div class="space-y-1" role="group" aria-labelledby="projects-headline">
           <ul class="list-none">
-            <router-link tag="li" :to="{ name: 'Types' }" v-slot="{ isActive }">
+            <router-link v-if="context.step1" tag="li" :to="{ name: 'ImportTypes' }" v-slot="{ isActive }">
             <a class="group flex items-center px-3 py-2 text-sm font-medium text-gray-600 rounded-md hover:text-gray-900 hover:bg-gray-50" :class="{ 'bg-gray-100 text-gray-900': isActive }">
               <span class="truncate">
-                Tipos
+                1. Importar Tipos
+              </span>
+            </a>
+            </router-link>
+            <router-link v-if="context.step2" tag="li" :to="{ name: 'Types' }" v-slot="{ isActive }">
+            <a class="group flex items-center px-3 py-2 text-sm font-medium text-gray-600 rounded-md hover:text-gray-900 hover:bg-gray-50" :class="{ 'bg-gray-100 text-gray-900': isActive }">
+              <span class="truncate">
+                2. Verificación Tipos
+              </span>
+            </a>
+            </router-link>
+            <router-link v-if="context.step3" tag="li" :to="{ name: 'ConvertSTD' }" v-slot="{ isActive }">
+            <a class="group flex items-center px-3 py-2 text-sm font-medium text-gray-600 rounded-md hover:text-gray-900 hover:bg-gray-50" :class="{ 'bg-gray-100 text-gray-900': isActive }">
+              <span class="truncate">
+                3. Convertir red
               </span>
             </a>
             </router-link>
@@ -37,3 +51,26 @@
   </div>
 </div>
 </template>
+
+<script lang="ts">
+import { Options, Vue, setup } from 'vue-class-component';
+import { computed } from 'vue';
+import { useStore } from 'vuex';
+
+const useContext = () => {
+  const store = useStore();
+
+  return {
+    typesResponse: computed(() => store.state.typesResponse),
+    step1: computed(() => store.state.step1),
+    step2: computed(() => store.state.step2),
+    step3: computed(() => store.state.step3),
+  };
+};
+
+@Options({})
+export default class Navbar extends Vue {
+  context = setup(() => useContext());
+}
+
+</script>
