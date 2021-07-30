@@ -21,7 +21,7 @@
             <section aria-labelledby="section-1-title">
               <div class="rounded-lg bg-white overflow-visible shadow">
                 <div class="p-6">
-                  <component v-if="getCurrentType && Object.entries(getCurrentType).length" :is="currentType" :value="getCurrentType"></component>
+                  <component v-if="getCurrentType && Object.entries(getCurrentType).length" :is="currentType" :value="getCurrentType" @save:types="saveNewType"></component>
                 </div>
               </div>
             </section>
@@ -38,13 +38,13 @@ import { useStore } from 'vuex';
 import TypSwitch from '@/components/TypesForm/TypSwitch.vue';
 import TypLod from '@/components/TypesForm/TypLod.vue';
 import TypLne from '@/components/TypesForm/TypLne.vue';
-import { TypesListU } from '../Types/Types';
 
 const useContext = () => {
   const store = useStore();
 
   return {
     typesResponse: computed(() => store.state.typesResponse),
+    saveType: (payload: any) => store.dispatch('saveType', payload),
   };
 };
 
@@ -68,16 +68,16 @@ export default class TypesForm extends Vue {
     if (this.context.typesResponse) {
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
-      return this.context.typesResponse[(this.$route.query.types as string)].map((n) => Object.keys(n).reduce((acc, key: string) => {
-        const newKey = key.split('(').shift() || '';
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        acc[newKey] = n[key as keyof TypesListU];
-        return acc;
-      }, {})).find((typ: any) => typ.ID === +this.$route.params.id);
-      // return this.context.typesResponse[(this.$route.query.types as string)];
+      return this.context.typesResponse[(this.$route.query.types as string)].find((typ: any) => typ['ID(a:40)'] === +this.$route.params.id);
     }
     return {};
+  }
+
+  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+  saveNewType({ form }: { form: any }): void {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    this.context.saveType({ form, type: this.$route.query.types });
   }
 }
 </script>

@@ -137,12 +137,12 @@ export default class Types extends Vue {
     this.context.selectedParent = parent;
   }
 
-  saveTypes() {
-    this.isLoading = this.$loading.show({
-      canCancel: false,
-    });
-    setTimeout(() => {
-      this.isLoading.hide();
+  async saveTypes() {
+    try {
+      this.isLoading = this.$loading.show({
+        canCancel: false,
+      });
+      await this.axios.post('/save-types', this.context.typesResponse);
       createToast({
         title: 'Cambios guardados satisfactoriamente',
       },
@@ -154,7 +154,22 @@ export default class Types extends Vue {
       });
       this.context.setStep3(true);
       this.$router.push('/convertir');
-    }, 5000);
+    } catch (e) {
+      createToast({
+        title: 'Ha ocurrido un error. Por favor vuelve a intentarlo',
+        description: `Error ${e.response.status}. ${e?.response?.message || ''}`,
+      },
+      {
+        hideProgressBar: true,
+        showIcon: true,
+        transition: 'slide',
+        type: 'danger',
+      });
+
+      console.error(e);
+    } finally {
+      this.isLoading.hide();
+    }
   }
 }
 </script>

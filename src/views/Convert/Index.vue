@@ -37,7 +37,7 @@
         </div>
     </div>
   </li>
-    <li v-if="completed" class="col-span-1 bg-white rounded-lg shadow divide-y divide-gray-200">
+    <li v-if="completed && downloadUrl" class="col-span-1 bg-white rounded-lg shadow divide-y divide-gray-200">
     <div class="w-full flex items-center justify-between p-6 space-x-6">
       <div class="flex-1">
         <div class="flex items-center space-x-3 truncate">
@@ -52,7 +52,7 @@
     <div>
       <div class="-mt-px flex divide-x divide-gray-200">
         <div class="w-0 flex-1 flex">
-          <a :href="tempFile" class="relative -mr-px w-0 flex-1 inline-flex items-center justify-center py-4 text-sm text-green-700 font-medium border border-transparent rounded-bl-lg hover:text-gray-500 cursor-pointer" download="WIND_FACTORY.xlsx">
+          <a :href="downloadUrl" class="relative -mr-px w-0 flex-1 inline-flex items-center justify-center py-4 text-sm text-green-700 font-medium border border-transparent rounded-bl-lg hover:text-gray-500 cursor-pointer" download="WIND_FACTORY.xlsx">
             <span class="ml-3">Descargar</span>
           </a>
         </div>
@@ -67,6 +67,7 @@
 import { Options, Vue } from 'vue-class-component';
 import { createToast } from 'mosha-vue-toastify';
 import 'mosha-vue-toastify/dist/style.css';
+import axios from 'axios';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import tempfile from '../../assets/files/WIND_FACTORY.xlsx';
@@ -80,6 +81,8 @@ export default class ConvertView extends Vue {
   isLoading!: any;
 
   completed = false;
+
+  downloadUrl!: any;
 
   openFileExplorer(): void {
     (this.$refs.filestd as HTMLElement).click();
@@ -120,24 +123,28 @@ export default class ConvertView extends Vue {
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       formData.append('std', stdFile.files[0]);
-      // const { data } = await this.axios.post('/create-pf-file', formData, {
-      //   headers: {
-      //     'Content-Type': 'multipart/form-data',
-      //   },
-      // });
-      setTimeout(() => {
-        this.isLoading.hide();
-        createToast({
-          title: 'Conversión completada correctamente',
+      const { data } = await axios({
+        url: 'https://wind-factory-api.herokuapp.com/create-pf-file',
+        method: 'POST',
+        headers: {
+          'Content-Type': 'multipart/form-data',
         },
-        {
-          hideProgressBar: true,
-          showIcon: true,
-          transition: 'slide',
-          type: 'success',
-        });
-        this.completed = true;
-      }, 5000);
+        responseType: 'blob',
+        proxy: false,
+        data: formData,
+      });
+      this.downloadUrl = window.URL.createObjectURL(new Blob([data]));
+      this.isLoading.hide();
+      createToast({
+        title: 'Conversión completada correctamente',
+      },
+      {
+        hideProgressBar: true,
+        showIcon: true,
+        transition: 'slide',
+        type: 'success',
+      });
+      this.completed = true;
     } catch (e) {
       createToast({
         title: 'Ha ocurrido un error. Por favor vuelve a intentarlo',
@@ -149,8 +156,9 @@ export default class ConvertView extends Vue {
         transition: 'slide',
         type: 'danger',
       });
-
       console.error(e);
+    } finally {
+      this.isLoading.hide();
     }
   }
 }

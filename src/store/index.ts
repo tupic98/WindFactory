@@ -20,6 +20,11 @@ export default createStore({
     setStep3(state, payload) {
       state.step3 = payload;
     },
+    saveType(state, { type, form }) {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      state.typesResponse[type] = state.typesResponse[type].map((obj: any) => [form].find((o) => o['ID(a:40)'] === obj['ID(a:40)']) || obj);
+    },
   },
   actions: {
     setTypesResponse({ commit }, payload) {
@@ -33,6 +38,9 @@ export default createStore({
     },
     setStep3({ commit }, payload) {
       commit('setStep3', payload);
+    },
+    saveType({ commit }, { type, form }) {
+      commit('saveType', { type, form });
     },
   },
   getters: {

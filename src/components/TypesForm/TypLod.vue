@@ -1,5 +1,8 @@
 <template>
   <div>
+    <h2 class="text-4xl">
+      {{ context.form['loc_name(a:40)'] }}
+    </h2>
     <!-- Tabs -->
     <div>
       <div class="sm:hidden">
@@ -40,26 +43,12 @@
               <div class="space-y-6 md:space-y-5">
                 <div class="md:grid md:grid-cols-4 md:gap-4 md:items-start md:border-t md:border-gray-200 md:pt-5">
                   <div class="md:col-span-2 md:grid md:grid-cols-3 md:gap-4 md:items-start">
-                    <label for="loc_name" class="block text-sm font-medium text-gray-700 md:mt-px md:pt-2">
-                      Name
-                    </label>
-                    <div class="mt-1 sm:mt-0 sm:col-span-2">
-                      <div class="mt-1 relative rounded-md shadow-sm max-w-xs">
-                        <input v-model="context.form.loc_name" type="text" name="loc_name" id="loc_name" class="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="space-y-6 md:space-y-5">
-                <div class="md:grid md:grid-cols-4 md:gap-4 md:items-start md:border-t md:border-gray-200 md:pt-5">
-                  <div class="md:col-span-2 md:grid md:grid-cols-3 md:gap-4 md:items-start">
-                    <label for="systp" class="block text-sm font-medium text-gray-700 md:mt-px md:pt-2">
+                    <label for="systp(i)" class="block text-sm font-medium text-gray-700 md:mt-px md:pt-2">
                       System Type
                     </label>
                     <div class="mt-1 sm:mt-0 sm:col-span-2">
                       <div class="mt-1 relative rounded-md shadow-sm max-w-xs">
-                        <custom-select v-model="context.form.systp" name="systp" :items="context.systemTypes" />
+                        <custom-select v-model="context.form['systp(i)']" name="systp(i)" :items="context.systemTypes" />
                       </div>
                     </div>
                   </div>
@@ -68,12 +57,12 @@
               <div class="space-y-6 md:space-y-5">
                 <div class="md:grid md:grid-cols-4 md:gap-4 md:items-start md:border-t md:border-gray-200 md:pt-5">
                   <div class="md:col-span-2 md:grid md:grid-cols-3 md:gap-4 md:items-start">
-                    <label for="phtech" class="block text-sm font-medium text-gray-700 md:mt-px md:pt-2">
+                    <label for="phtech(i)" class="block text-sm font-medium text-gray-700 md:mt-px md:pt-2">
                       Technology
                     </label>
                     <div class="mt-1 sm:mt-0 sm:col-span-2">
                       <div class="mt-1 relative rounded-md shadow-sm max-w-xs">
-                        <custom-select v-model="context.form.phtech" name="phtech" :items="context.techonologies" />
+                        <custom-select v-model="context.form['phtech(i)']" name="phtech(i)" :items="context.techonologies" />
                       </div>
                     </div>
                   </div>
@@ -99,22 +88,22 @@
               <div class="space-y-6 md:space-y-5">
                 <div class="md:grid md:grid-cols-4 md:gap-4 md:items-start md:border-t md:border-gray-200 md:pt-5">
                   <div class="md:col-span-2 md:grid md:grid-cols-3 md:gap-4 md:items-start">
-                    <label for="aP" class="block text-sm font-medium text-gray-700 md:mt-px md:pt-2">
+                    <label for="aP(r)" class="block text-sm font-medium text-gray-700 md:mt-px md:pt-2">
                       Coefficient aP
                     </label>
                     <div class="mt-1 sm:mt-0 sm:col-span-2">
                       <div class="mt-1 relative rounded-md shadow-sm max-w-xs">
-                        <input v-model="context.form.aP" type="text" name="aP" id="aP" class="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
+                        <input v-model="context.form['aP(r)']" type="text" name="aP(r)" id="aP(r)" class="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
                       </div>
                     </div>
                   </div>
                   <div class="mt-4 md:mt-0 md:col-span-2 md:grid md:grid-cols-3 md:gap-4 md:items-start">
-                    <label for="kpu0" class="block text-sm font-medium text-gray-700 md:mt-px md:pt-2">
+                    <label for="kpu0(r)" class="block text-sm font-medium text-gray-700 md:mt-px md:pt-2">
                       Exponent e_aP
                     </label>
                     <div class="mt-1 sm:mt-0 sm:col-span-2">
                       <div class="mt-1 relative rounded-md shadow-sm max-w-xs">
-                        <input v-model="context.form.kpu0" type="text" name="kpu0" id="kpu0" class="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
+                        <input v-model="context.form['kpu0(r)']" type="text" name="kpu0(r)" id="kpu0(r)" class="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
                       </div>
                     </div>
                   </div>
@@ -123,22 +112,22 @@
               <div class="space-y-6 md:space-y-5">
                 <div class="md:grid md:grid-cols-4 md:gap-4 md:items-start md:border-t md:border-gray-200 md:pt-5">
                   <div class="md:col-span-2 md:grid md:grid-cols-3 md:gap-4 md:items-start">
-                    <label for="bP" class="block text-sm font-medium text-gray-700 md:mt-px md:pt-2">
+                    <label for="bP(r)" class="block text-sm font-medium text-gray-700 md:mt-px md:pt-2">
                       Coefficient bP
                     </label>
                     <div class="mt-1 sm:mt-0 sm:col-span-2">
                       <div class="mt-1 relative rounded-md shadow-sm max-w-xs">
-                        <input v-model="context.form.bP" type="text" name="bP" id="bP" class="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
+                        <input v-model="context.form['bP(r)']" type="text" name="bP(r)" id="bP(r)" class="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
                       </div>
                     </div>
                   </div>
                   <div class="mt-4 md:mt-0 md:col-span-2 md:grid md:grid-cols-3 md:gap-4 md:items-start">
-                    <label for="kpu1" class="block text-sm font-medium text-gray-700 md:mt-px md:pt-2">
+                    <label for="kpu1(r)" class="block text-sm font-medium text-gray-700 md:mt-px md:pt-2">
                       Exponent e_bP
                     </label>
                     <div class="mt-1 sm:mt-0 sm:col-span-2">
                       <div class="mt-1 relative rounded-md shadow-sm max-w-xs">
-                        <input v-model="context.form.kpu1" type="text" name="kpu1" id="kpu1" class="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
+                        <input v-model="context.form['kpu1(r)']" type="text" name="kpu1(r)" id="kpu1(r)" class="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
                       </div>
                     </div>
                   </div>
@@ -149,12 +138,12 @@
                   <div class="md:col-span-2 md:grid md:grid-cols-3 md:gap-4 md:items-start">
                   </div>
                   <div class="mt-4 md:mt-0 md:col-span-2 md:grid md:grid-cols-3 md:gap-4 md:items-start">
-                    <label for="kpu" class="block text-sm font-medium text-gray-700 md:mt-px md:pt-2">
+                    <label for="kpu(r)" class="block text-sm font-medium text-gray-700 md:mt-px md:pt-2">
                       Exponent e_cP
                     </label>
                     <div class="mt-1 sm:mt-0 sm:col-span-2">
                       <div class="mt-1 relative rounded-md shadow-sm max-w-xs">
-                        <input v-model="context.form.kpu" type="text" name="kpu" id="kpu" class="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
+                        <input v-model="context.form['kpu(r)']" type="text" name="kpu(r)" id="kpu(r)" class="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
                       </div>
                     </div>
                   </div>
@@ -174,22 +163,22 @@
               <div class="space-y-6 md:space-y-5">
                 <div class="md:grid md:grid-cols-4 md:gap-4 md:items-start md:border-t md:border-gray-200 md:pt-5">
                   <div class="md:col-span-2 md:grid md:grid-cols-3 md:gap-4 md:items-start">
-                    <label for="aQ" class="block text-sm font-medium text-gray-700 md:mt-px md:pt-2">
+                    <label for="aQ(r)" class="block text-sm font-medium text-gray-700 md:mt-px md:pt-2">
                       Coefficient aQ
                     </label>
                     <div class="mt-1 sm:mt-0 sm:col-span-2">
                       <div class="mt-1 relative rounded-md shadow-sm max-w-xs">
-                        <input v-model="context.form.aQ" type="text" name="aQ" id="aQ" class="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
+                        <input v-model="context.form['aQ(r)']" type="text" name="aQ(r)" id="aQ(r)" class="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
                       </div>
                     </div>
                   </div>
                   <div class="mt-4 md:mt-0 md:col-span-2 md:grid md:grid-cols-3 md:gap-4 md:items-start">
-                    <label for="kqu0" class="block text-sm font-medium text-gray-700 md:mt-px md:pt-2">
+                    <label for="kqu0(r)" class="block text-sm font-medium text-gray-700 md:mt-px md:pt-2">
                       Exponent e_aQ
                     </label>
                     <div class="mt-1 sm:mt-0 sm:col-span-2">
                       <div class="mt-1 relative rounded-md shadow-sm max-w-xs">
-                        <input v-model="context.form.kqu0" type="text" name="kqu0" id="kqu0" class="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
+                        <input v-model="context.form['kqu0(r)']" type="text" name="kqu0(r)" id="kqu0(r)" class="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
                       </div>
                     </div>
                   </div>
@@ -198,22 +187,22 @@
               <div class="space-y-6 md:space-y-5">
                 <div class="md:grid md:grid-cols-4 md:gap-4 md:items-start md:border-t md:border-gray-200 md:pt-5">
                   <div class="md:col-span-2 md:grid md:grid-cols-3 md:gap-4 md:items-start">
-                    <label for="bQ" class="block text-sm font-medium text-gray-700 md:mt-px md:pt-2">
+                    <label for="bQ(r)" class="block text-sm font-medium text-gray-700 md:mt-px md:pt-2">
                       Coefficient bQ
                     </label>
                     <div class="mt-1 sm:mt-0 sm:col-span-2">
                       <div class="mt-1 relative rounded-md shadow-sm max-w-xs">
-                        <input v-model="context.form.bQ" type="text" name="bQ" id="bQ" class="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
+                        <input v-model="context.form['bQ(r)']" type="text" name="bQ(r)" id="bQ(r)" class="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
                       </div>
                     </div>
                   </div>
                   <div class="mt-4 md:mt-0 md:col-span-2 md:grid md:grid-cols-3 md:gap-4 md:items-start">
-                    <label for="kqu1" class="block text-sm font-medium text-gray-700 md:mt-px md:pt-2">
+                    <label for="kqu1(r)" class="block text-sm font-medium text-gray-700 md:mt-px md:pt-2">
                       Exponent e_bQ
                     </label>
                     <div class="mt-1 sm:mt-0 sm:col-span-2">
                       <div class="mt-1 relative rounded-md shadow-sm max-w-xs">
-                        <input v-model="context.form.kqu1" type="text" name="kqu1" id="kqu1" class="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
+                        <input v-model="context.form['kqu1(r)']" type="text" name="kqu1(r)" id="kqu1(r)" class="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
                       </div>
                     </div>
                   </div>
@@ -224,12 +213,12 @@
                   <div class="md:col-span-2 md:grid md:grid-cols-3 md:gap-4 md:items-start">
                   </div>
                   <div class="mt-4 md:mt-0 md:col-span-2 md:grid md:grid-cols-3 md:gap-4 md:items-start">
-                    <label for="kqu" class="block text-sm font-medium text-gray-700 md:mt-px md:pt-2">
+                    <label for="kqu(r)" class="block text-sm font-medium text-gray-700 md:mt-px md:pt-2">
                       Exponent e_cQ
                     </label>
                     <div class="mt-1 sm:mt-0 sm:col-span-2">
                       <div class="mt-1 relative rounded-md shadow-sm max-w-xs">
-                        <input v-model="context.form.kqu" type="text" name="kqu" id="kqu" class="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
+                        <input v-model="context.form['kqu(r)']" type="text" name="kqu(r)" id="kqu(r)" class="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
                       </div>
                     </div>
                   </div>
@@ -241,10 +230,10 @@
       </div>
       <div class="pt-5">
         <div class="flex justify-end">
-          <button type="button" class="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+          <button type="button" class="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" @click.prevent="$router.go(-1)">
             Cancel
           </button>
-          <button type="submit" class="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+          <button type="submit" class="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" @click.prevent="saveTypes()">
             Save
           </button>
         </div>
@@ -253,7 +242,11 @@
   </div>
 </template>
 <script lang="ts">
-import { Options, Vue, setup } from 'vue-class-component';
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-nocheck
+import {
+  Options, Vue, setup, prop,
+} from 'vue-class-component';
 import { toRefs, reactive } from 'vue';
 import CustomSelect from '@/components/CustomSelect.vue';
 
@@ -261,23 +254,46 @@ interface State {
   selectedTab: string;
 }
 
+class Props {
+  value = prop({
+    type: Object,
+    default: () => ({
+      'ID(a:40)': '',
+      'aP(r)': '',
+      'aQ(r)': '',
+      'bP(r)': '',
+      'bQ(r)': '',
+      'kpu(r)': '',
+      'kpu0(r)': '',
+      'kpu1(r)': '',
+      'kqu(r)': '',
+      'kqu0(r)': '',
+      'kqu1(r)': '',
+      'loc_name(a:40)': '',
+      'phtech(i)': '0',
+      'systp(i)': '0',
+    }),
+  })
+}
+
 const useContext = () => {
   const state: State = reactive({
     selectedTab: 'general',
     form: {
-      loc_name: '',
-      systp: 0,
-      phtech: 0,
-      aP: '',
-      bP: '',
-      kpu0: '',
-      kpu1: '',
-      kpu: '',
-      aQ: '',
-      bQ: '',
-      kqu0: '',
-      kqu1: '',
-      kqu: '',
+      'ID(a:40)': '',
+      'aP(r)': '',
+      'aQ(r)': '',
+      'bP(r)': '',
+      'bQ(r)': '',
+      'kpu(r)': '',
+      'kpu0(r)': '',
+      'kpu1(r)': '',
+      'kqu(r)': '',
+      'kqu0(r)': '',
+      'kqu1(r)': '',
+      'loc_name(a:40)': '',
+      'phtech(i)': '0',
+      'systp(i)': '0',
     },
     systemTypes: [
       {
@@ -335,7 +351,28 @@ const useContext = () => {
     CustomSelect,
   },
 })
-export default class TypLod extends Vue {
-  context = setup(() => useContext())
+export default class TypLod extends Vue.with(Props) {
+  context = setup(() => useContext());
+
+  mounted(): void {
+    const newForm = JSON.parse(JSON.stringify(this.value));
+
+    this.context.form = {
+      ...this.context.form,
+      ...Object.keys(newForm).reduce((acc: any, key: string) => {
+        acc[key] = newForm[key] === -1 || !newForm[key] ? '0' : newForm[key];
+        return acc;
+      }, {}),
+    };
+  }
+
+  saveTypes() :void {
+    const newTypes = JSON.parse(JSON.stringify({
+      ...this.context.form,
+      'ID(a:40)': +this.context.form['ID(a:40)'],
+    }));
+    this.$emit('save:types', { form: newTypes });
+    this.$router.go(-1);
+  }
 }
 </script>
