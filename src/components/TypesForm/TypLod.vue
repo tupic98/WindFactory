@@ -297,45 +297,45 @@ const useContext = () => {
     },
     systemTypes: [
       {
-        value: 0,
+        value: '0',
         name: 'AC',
       },
       {
-        value: 1,
+        value: '1',
         name: 'DC',
       },
     ],
     techonologies: [
       {
-        value: 0,
+        value: '0',
         name: '3PH-\'D\'',
       },
       {
-        value: 1,
+        value: '1',
         name: '3PH PH-E',
       },
       {
-        value: 2,
+        value: '2',
         name: '3PH-\'YN\'',
       },
       {
-        value: 3,
+        value: '3',
         name: '2PH PH-E',
       },
       {
-        value: 4,
+        value: '4',
         name: '2PH-\'YN\'',
       },
       {
-        value: 5,
+        value: '5',
         name: '1PH PH-PH',
       },
       {
-        value: 6,
+        value: '6',
         name: '1PH PH-N',
       },
       {
-        value: 7,
+        value: '7',
         name: '1PH PH-E',
       },
     ],
