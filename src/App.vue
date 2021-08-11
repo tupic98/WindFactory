@@ -16,7 +16,14 @@ import Navbar from '@/components/Navbar.vue';
     Navbar,
   },
 })
-export default class App extends Vue {}
+export default class App extends Vue {
+  mounted() {
+    this.$router.push('/');
+    window.onbeforeunload = function () {
+      return 'Seguro que quieres recargar? Los cambios hechos hasta el momento se perderán y empezaras de nuevo';
+    };
+  }
+}
 </script>
 
 <style lang="scss">
