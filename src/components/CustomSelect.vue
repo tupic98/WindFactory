@@ -1,9 +1,18 @@
 <template>
   <div>
     <div class="mt-1 relative">
-      <button type="button" class="bg-white relative w-full border border-gray-300 rounded-md shadow-sm pl-3 pr-10 py-2 text-left cursor-default focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" aria-haspopup="listbox" aria-expanded="true" :aria-labelledby="name" @click.prevent="context.show = !context.show">
+      <button
+        type="button"
+        class="relative w-full border border-gray-300 rounded-md shadow-sm pl-3 pr-10 py-2 text-left cursor-default focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+        :class="[modelValue === 'wind_disabled' ? 'cursor-not-allowed bg-gray-300' : 'cursor-pointer bg-white']"
+        aria-haspopup="listbox"
+        aria-expanded="true"
+        :aria-labelledby="name"
+        :disabled="modelValue === 'wind_disabled'"
+        @click.prevent="toggleSelect"
+      >
         <span class="block truncate">
-          {{ items.length ? items.find((i) => i.value === modelValue).name : '' }}
+          {{ items.length ? items.find((i) => i.value === modelValue).name === 'wind_disabled' || items.find((i) => i.value === modelValue).name === '' ? 'Deshabilitado' : items.find((i) => i.value === modelValue).name : '' }}
         </span>
         <span class="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
           <!-- Heroicon name: solid/selector -->
@@ -19,7 +28,7 @@
           Highlighted: "text-white bg-indigo-600", Not Highlighted: "text-gray-900"
         -->
         <template v-for="(item, i) in items" :key="i">
-          <li class="text-gray-900 cursor-default select-none relative py-2 pl-3 pr-9 group hover:text-white hover:bg-indigo-600 transition duration-100 ease-in-out" :id="`listbox-option-${i}`" role="option" @click.prevent="updateValue(item.value)">
+          <li v-if="item.value" class="text-gray-900 cursor-default select-none relative py-2 pl-3 pr-9 group hover:text-white hover:bg-indigo-600 transition duration-100 ease-in-out" :id="`listbox-option-${i}`" role="option" @click.prevent="updateValue(item.value)">
           <!-- Selected: "font-semibold", Not Selected: "font-normal" -->
             <span class="font-normal block truncate" :class="{ 'font-semibold': item.value === modelValue }">
               {{ item.name }}
@@ -75,6 +84,11 @@ class Props {
     type: String,
     default: '0',
   });
+
+  disabled = prop({
+    type: Boolean,
+    default: false,
+  });
 }
 
 const useContext = () => {
@@ -99,6 +113,12 @@ const useContext = () => {
   },
 })
 export default class CustomSelect extends Vue.with(Props) {
-  context = setup(() => useContext())
+  context = setup(() => useContext());
+
+  toggleSelect(): void {
+    if (!this.disabled) {
+      this.context.show = !this.context.show;
+    }
+  }
 }
 </script>
