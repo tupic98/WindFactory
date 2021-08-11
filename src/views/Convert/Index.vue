@@ -124,7 +124,7 @@ export default class ConvertView extends Vue {
       // @ts-ignore
       formData.append('std', stdFile.files[0]);
       const { data } = await axios({
-        url: 'https://wind-factory-api.herokuapp.com/create-pf-file',
+        url: `${process.env.API_URL}/create-pf-file`,
         method: 'POST',
         headers: {
           'Content-Type': 'multipart/form-data',

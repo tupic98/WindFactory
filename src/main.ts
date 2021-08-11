@@ -13,7 +13,7 @@ const app = createApp(App);
 
 const axiosInstance = axios.create({
   proxy: false,
-  baseURL: 'https://wind-factory-api.herokuapp.com',
+  baseURL: process.env.API_URL,
 });
 
 app.use(store).use(router).use(VueAxios, axiosInstance)
