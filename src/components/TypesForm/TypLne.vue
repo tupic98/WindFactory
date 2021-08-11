@@ -48,7 +48,12 @@
                     </label>
                     <div class="mt-1 sm:mt-0 sm:col-span-2">
                       <div class="mt-1 relative rounded-md shadow-sm max-w-xs">
-                        <input v-model="context.form['uline(r)']" type="text" name="uline(r)" id="uline(r)" class="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
+                        <custom-input v-model="context.form['uline(r)']"
+                          type="text"
+                          name="uline(r)"
+                          id="uline(r)"
+                          :disabled="!context.form['uline(r)']"
+                        />
                         <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
                           <span class="text-gray-500 sm:text-sm">
                             kV
@@ -63,7 +68,7 @@
                     </label>
                     <div class="mt-1 sm:mt-0 sm:col-span-2">
                       <div class="mt-1 relative rounded-md shadow-sm max-w-xs">
-                        <input v-model="context.form['sline(r)']" type="text" name="sline(r)" id="sline(r)" class="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
+                        <custom-input v-model="context.form['sline(r)']" type="text" name="sline(r)" id="sline(r)" :disabled="!context.form['sline(r)']"/>
                         <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
                           <span class="text-gray-500 sm:text-sm">
                             kA
@@ -80,7 +85,7 @@
                     </label>
                     <div class="mt-1 sm:mt-0 sm:col-span-2">
                       <div class="mt-1 relative rounded-md shadow-sm max-w-xs">
-                        <input v-model="context.form['InomAir(r)']" type="text" name="InomAir(r)" id="InomAir(r)" class="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
+                        <custom-input v-model="context.form['InomAir(r)']" type="text" name="InomAir(r)" id="InomAir(r)" :disabled="!context.form['InomAir(r)']" />
                         <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
                           <span class="text-gray-500 sm:text-sm">
                             kA
@@ -99,7 +104,7 @@
                     </label>
                     <div class="mt-1 sm:mt-0 sm:col-span-2">
                       <div class="mt-1 relative rounded-md shadow-sm max-w-xs">
-                        <custom-select v-model="context.form['cohl_(i)']" name="cohl_(i)" :items="context.cableTypes" />
+                        <custom-select v-model="context.form['cohl_(i)']" name="cohl_(i)" :items="context.cableTypes" :disabled="!context.form['cohl_(i)']" />
                       </div>
                     </div>
                   </div>
@@ -109,7 +114,7 @@
                     </label>
                     <div class="mt-1 sm:mt-0 sm:col-span-2">
                       <div class="mt-1 relative rounded-md shadow-sm max-w-xs">
-                        <custom-select v-model="context.form['systp(i)']" name="systp(i)" :items="context.systemTypes" />
+                        <custom-select v-model="context.form['systp(i)']" name="systp(i)" :items="context.systemTypes" :disabled="!context.form['systp(i)']"/>
                       </div>
                     </div>
                   </div>
@@ -123,7 +128,7 @@
                     </label>
                     <div class="mt-1 sm:mt-0 sm:col-span-2">
                       <div class="mt-1 relative rounded-md shadow-sm max-w-xs">
-                        <custom-select v-model="context.form['nlnph(i)']" name="nlnph(i)" :items="context.phases" />
+                        <custom-select v-model="context.form['nlnph(i)']" name="nlnph(i)" :items="context.phases" :disabled="!context.form['nlnph(i)']" />
                       </div>
                     </div>
                   </div>
@@ -133,7 +138,7 @@
                     </label>
                     <div class="mt-1 sm:mt-0 sm:col-span-2">
                       <div class="mt-1 relative rounded-md shadow-sm max-w-xs">
-                        <custom-select v-model="context.form['nneutral(i)']" name="nneutral(i)" :items="context.numberOfNeutrals" />
+                        <custom-select v-model="context.form['nneutral(i)']" name="nneutral(i)" :items="context.numberOfNeutrals" :disabled="!context.form['nneutral(i)']"/>
                       </div>
                     </div>
                   </div>
@@ -147,7 +152,7 @@
                     </label>
                     <div class="mt-1 sm:mt-0 sm:col-span-2">
                       <div class="mt-1 relative rounded-md shadow-sm max-w-xs">
-                        <input v-model="context.form['frnom(r)']" type="text" name="frnom(r)" id="frnom(r)" class="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
+                        <custom-input v-model="context.form['frnom(r)']" type="text" name="frnom(r)" id="frnom(r)" :disabled="!context.form['frnom(r)']" />
                         <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
                           <span class="text-gray-500 sm:text-sm">
                             Hz
@@ -178,7 +183,7 @@
                     </label>
                     <div class="mt-1 sm:mt-0 sm:col-span-2">
                       <div class="mt-1 relative rounded-md shadow-sm max-w-xs">
-                        <input v-model="context.form['rline(r)']" type="text" name="rline(r)" id="rline(r)" class="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
+                        <custom-input v-model="context.form['rline(r)']" type="text" name="rline(r)" id="rline(r)" :disabled="!context.form['rline(r)']" />
                         <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
                           <span class="text-gray-500 sm:text-sm">
                             Ohm/km
@@ -197,7 +202,7 @@
                     </label>
                     <div class="mt-1 sm:mt-0 sm:col-span-2">
                       <div class="mt-1 relative rounded-md shadow-sm max-w-xs">
-                        <input v-model="context.form['xline(r)']" type="text" name="xline(r)" id="xline(r)" class="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
+                        <custom-input v-model="context.form['xline(r)']" type="text" name="xline(r)" id="xline(r)" :disabled="!context.form['xline(r)']"/>
                         <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
                           <span class="text-gray-500 sm:text-sm">
                             Ohm/km
@@ -228,7 +233,7 @@
                     </label>
                     <div class="mt-1 sm:mt-0 sm:col-span-2">
                       <div class="mt-1 relative rounded-md shadow-sm max-w-xs">
-                        <input v-model="context.form['rline0(r)']" type="text" name="rline0(r)" id="rline0(r)" class="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
+                        <custom-input v-model="context.form['rline0(r)']" type="text" name="rline0(r)" id="rline0(r)" :disabled="!context.form['rline0(r)']" />
                         <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
                           <span class="text-gray-500 sm:text-sm">
                             Ohm/km
@@ -247,7 +252,7 @@
                     </label>
                     <div class="mt-1 sm:mt-0 sm:col-span-2">
                       <div class="mt-1 relative rounded-md shadow-sm max-w-xs">
-                        <input v-model="context.form['xline0(r)']" type="text" name="xline0(r)" id="xline0(r)" class="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
+                        <custom-input v-model="context.form['xline0(r)']" type="text" name="xline0(r)" id="xline0(r)" :disabled="!context.form['xline0(r)']" />
                         <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
                           <span class="text-gray-500 sm:text-sm">
                             Ohm/km
@@ -278,7 +283,7 @@
                     </label>
                     <div class="mt-1 sm:mt-0 sm:col-span-2">
                       <div class="mt-1 relative rounded-md shadow-sm max-w-xs">
-                        <input v-model="context.form['rnline(r)']" type="text" name="rnline(r)" id="rnline(r)" class="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
+                        <custom-input v-model="context.form['rnline(r)']" type="text" name="rnline(r)" id="rnline(r)" :disabled="!context.form['rnline(r)']" />
                         <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
                           <span class="text-gray-500 sm:text-sm">
                             Ohm/km
@@ -297,7 +302,7 @@
                     </label>
                     <div class="mt-1 sm:mt-0 sm:col-span-2">
                       <div class="mt-1 relative rounded-md shadow-sm max-w-xs">
-                        <input v-model="context.form['xnline(r)']" type="text" name="xnline(r)" id="xnline(r)" class="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
+                        <custom-input v-model="context.form['xnline(r)']" type="text" name="xnline(r)" id="xnline(r)" :disabled="!context.form['xnline(r)']" />
                         <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
                           <span class="text-gray-500 sm:text-sm">
                             Ohm/km
@@ -328,7 +333,7 @@
                     </label>
                     <div class="mt-1 sm:mt-0 sm:col-span-2">
                       <div class="mt-1 relative rounded-md shadow-sm max-w-xs">
-                        <input v-model="context.form['rpnline(r)']" type="text" name="rpnline(r)" id="rpnline(r)" class="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
+                        <custom-input v-model="context.form['rpnline(r)']" type="text" name="rpnline(r)" id="rpnline(r)" :disabled="!context.form['rpnline(r)']" />
                         <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
                           <span class="text-gray-500 sm:text-sm">
                             Ohm/km
@@ -347,7 +352,7 @@
                     </label>
                     <div class="mt-1 sm:mt-0 sm:col-span-2">
                       <div class="mt-1 relative rounded-md shadow-sm max-w-xs">
-                        <input v-model="context.form['xpnline(r)']" type="text" name="xpnline(r)" id="xpnline(r)" class="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
+                        <custom-input v-model="context.form['xpnline(r)']" type="text" name="xpnline(r)" id="xpnline(r)" :disabled="!context.form['xpnline(r)']" />
                         <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
                           <span class="text-gray-500 sm:text-sm">
                             Ohm/km
@@ -383,7 +388,7 @@
                     </label>
                     <div class="mt-1 sm:mt-0 sm:col-span-2">
                       <div class="mt-1 relative rounded-md shadow-sm max-w-xs">
-                        <input v-model="context.form['tmax(r)']" type="text" name="tmax(r)" id="tmax(r)" class="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
+                        <custom-input v-model="context.form['tmax(r)']" type="text" name="tmax(r)" id="tmax(r)" :disabled="!context.form['tmax(r)']" />
                         <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
                           <span class="text-gray-500 sm:text-sm">
                             degC
@@ -398,7 +403,7 @@
                     </label>
                     <div class="mt-1 sm:mt-0 sm:col-span-2">
                       <div class="mt-1 relative rounded-md shadow-sm max-w-xs">
-                        <custom-select v-model="context.form['mlei(a:2)']" name="mlei(a:2)" :items="context.materials" />
+                        <custom-select v-model="context.form['mlei(a:2)']" name="mlei(a:2)" :items="context.materials" :disabled="!context.form['mlei(a:2)']" />
                       </div>
                     </div>
                   </div>
@@ -423,7 +428,7 @@
                     </label>
                     <div class="mt-1 sm:mt-0 sm:col-span-2">
                       <div class="mt-1 relative rounded-md shadow-sm max-w-xs">
-                        <input v-model="context.form['bline(r)']" type="text" name="bline(r)" id="bline(r)" class="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
+                        <custom-input v-model="context.form['bline(r)']" type="text" name="bline(r)" id="bline(r)" :disabled="!context.form['bline(r)']" />
                         <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
                           <span class="text-gray-500 sm:text-sm">
                             uS/km
@@ -442,7 +447,7 @@
                     </label>
                     <div class="mt-1 sm:mt-0 sm:col-span-2">
                       <div class="mt-1 relative rounded-md shadow-sm max-w-xs">
-                        <input v-model="context.form['tline(r)']" type="text" name="tline(r)" id="tline(r)" class="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
+                        <custom-input v-model="context.form['tline(r)']" type="text" name="tline(r)" id="tline(r)" :disabled="!context.form['tline(r)']" />
                       </div>
                     </div>
                   </div>
@@ -467,7 +472,7 @@
                     </label>
                     <div class="mt-1 sm:mt-0 sm:col-span-2">
                       <div class="mt-1 relative rounded-md shadow-sm max-w-xs">
-                        <input v-model="context.form['bnline(r)']" type="text" name="bnline(r)" id="bnline(r)" class="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
+                        <custom-input v-model="context.form['bnline(r)']" type="text" name="bnline(r)" id="bnline(r)" :disabled="!context.form['bnline(r)']" />
                         <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
                           <span class="text-gray-500 sm:text-sm">
                             uS/km
@@ -497,7 +502,7 @@
                     </label>
                     <div class="mt-1 sm:mt-0 sm:col-span-2">
                       <div class="mt-1 relative rounded-md shadow-sm max-w-xs">
-                        <input v-model="context.form['bpnline(r)']" type="text" name="bpnline(r)" id="bpnline(r)" class="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
+                        <custom-input v-model="context.form['bpnline(r)']" type="text" name="bpnline(r)" id="bpnline(r)" :disabled="!context.form['bpnline(r)']" />
                         <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
                           <span class="text-gray-500 sm:text-sm">
                             uS/km
@@ -533,6 +538,7 @@ import {
 } from 'vue-class-component';
 import { toRefs, reactive } from 'vue';
 import CustomSelect from '@/components/CustomSelect.vue';
+import CustomInput from '@/components/CustomInput.vue';
 
 interface State {
   selectedTab: string;
@@ -605,11 +611,27 @@ const useContext = () => {
     },
     systemTypes: [
       {
+        value: '',
+        name: '',
+      },
+      {
+        value: 'wind_disabled',
+        name: 'wind_disabled',
+      },
+      {
         value: '0',
         name: 'Copper',
       },
     ],
     materials: [
+      {
+        value: '',
+        name: '',
+      },
+      {
+        value: 'wind_disabled',
+        name: 'wind_disabled',
+      },
       {
         value: 'As',
         name: 'ACSR',
@@ -625,6 +647,14 @@ const useContext = () => {
     ],
     cableTypes: [
       {
+        value: '',
+        name: '',
+      },
+      {
+        value: 'wind_disabled',
+        name: 'wind_disabled',
+      },
+      {
         value: '0',
         name: 'Cable',
       },
@@ -634,6 +664,14 @@ const useContext = () => {
       },
     ],
     phases: [
+      {
+        value: '',
+        name: '',
+      },
+      {
+        value: 'wind_disabled',
+        name: 'wind_disabled',
+      },
       {
         value: '0',
         name: '1',
@@ -648,6 +686,14 @@ const useContext = () => {
       },
     ],
     numberOfNeutrals: [
+      {
+        value: '',
+        name: '',
+      },
+      {
+        value: 'wind_disabled',
+        name: 'wind_disabled',
+      },
       {
         value: '0',
         name: '0',
@@ -667,6 +713,7 @@ const useContext = () => {
 @Options({
   components: {
     CustomSelect,
+    CustomInput,
   },
 })
 export default class TypLne extends Vue.with(Props) {
@@ -681,13 +728,17 @@ export default class TypLne extends Vue.with(Props) {
       // @ts-ignore
       ...this.context.form,
       ...Object.keys(newForm).reduce((acc: any, key: string) => {
-        acc[key] = newForm[key] === -1 || !newForm[key] ? '0' : newForm[key];
+        acc[key] = newForm[key] === -1 || !newForm[key] ? 'wind_disabled' : newForm[key];
         return acc;
       }, {}),
     };
   }
 
   saveTypes(): void {
+    this.context.form = Object.keys(this.context.form).reduce((acc: any, key: string) => {
+      acc[key] = this.context.form[key] === 'wind_disabled' ? '' : this.context.form[key];
+      return acc;
+    }, {});
     const newTypes = JSON.parse(JSON.stringify({
       ...this.context.form,
       'ID(a:40)': +this.context.form['ID(a:40)'],

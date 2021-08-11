@@ -48,7 +48,7 @@
                     </label>
                     <div class="mt-1 sm:mt-0 sm:col-span-2">
                       <div class="mt-1 relative rounded-md shadow-sm max-w-xs">
-                        <custom-select v-model="context.form['systp(i)']" name="systp(i)" :items="context.systemTypes" />
+                        <custom-select v-model="context.form['systp(i)']" name="systp(i)" :items="context.systemTypes" :disabled="!context.form['systp(i)']" />
                       </div>
                     </div>
                   </div>
@@ -62,7 +62,7 @@
                     </label>
                     <div class="mt-1 sm:mt-0 sm:col-span-2">
                       <div class="mt-1 relative rounded-md shadow-sm max-w-xs">
-                        <custom-select v-model="context.form['phtech(i)']" name="phtech(i)" :items="context.techonologies" />
+                        <custom-select v-model="context.form['phtech(i)']" name="phtech(i)" :items="context.techonologies" :disabled="!context.form['phtech(i)']"/>
                       </div>
                     </div>
                   </div>
@@ -93,7 +93,7 @@
                     </label>
                     <div class="mt-1 sm:mt-0 sm:col-span-2">
                       <div class="mt-1 relative rounded-md shadow-sm max-w-xs">
-                        <input v-model="context.form['aP(r)']" type="text" name="aP(r)" id="aP(r)" class="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
+                        <custom-input v-model="context.form['aP(r)']" type="text" name="aP(r)" id="aP(r)" :disbaled="!context.form['aP(r)']" />
                       </div>
                     </div>
                   </div>
@@ -103,7 +103,7 @@
                     </label>
                     <div class="mt-1 sm:mt-0 sm:col-span-2">
                       <div class="mt-1 relative rounded-md shadow-sm max-w-xs">
-                        <input v-model="context.form['kpu0(r)']" type="text" name="kpu0(r)" id="kpu0(r)" class="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
+                        <custom-input v-model="context.form['kpu0(r)']" type="text" name="kpu0(r)" id="kpu0(r)" :disabled="!context.form['kpu0(r)']" />
                       </div>
                     </div>
                   </div>
@@ -117,7 +117,7 @@
                     </label>
                     <div class="mt-1 sm:mt-0 sm:col-span-2">
                       <div class="mt-1 relative rounded-md shadow-sm max-w-xs">
-                        <input v-model="context.form['bP(r)']" type="text" name="bP(r)" id="bP(r)" class="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
+                        <custom-input v-model="context.form['bP(r)']" type="text" name="bP(r)" id="bP(r)" :disabled="!context.form['bP(r)']" />
                       </div>
                     </div>
                   </div>
@@ -127,7 +127,7 @@
                     </label>
                     <div class="mt-1 sm:mt-0 sm:col-span-2">
                       <div class="mt-1 relative rounded-md shadow-sm max-w-xs">
-                        <input v-model="context.form['kpu1(r)']" type="text" name="kpu1(r)" id="kpu1(r)" class="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
+                        <custom-input v-model="context.form['kpu1(r)']" type="text" name="kpu1(r)" id="kpu1(r)" :disabled="!context.form['kpu1(r)']"/>
                       </div>
                     </div>
                   </div>
@@ -143,7 +143,7 @@
                     </label>
                     <div class="mt-1 sm:mt-0 sm:col-span-2">
                       <div class="mt-1 relative rounded-md shadow-sm max-w-xs">
-                        <input v-model="context.form['kpu(r)']" type="text" name="kpu(r)" id="kpu(r)" class="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
+                        <custom-input v-model="context.form['kpu(r)']" type="text" name="kpu(r)" id="kpu(r)" :disabled="!context.form['kpu(r)']"/>
                       </div>
                     </div>
                   </div>
@@ -168,7 +168,7 @@
                     </label>
                     <div class="mt-1 sm:mt-0 sm:col-span-2">
                       <div class="mt-1 relative rounded-md shadow-sm max-w-xs">
-                        <input v-model="context.form['aQ(r)']" type="text" name="aQ(r)" id="aQ(r)" class="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
+                        <custom-input v-model="context.form['aQ(r)']" type="text" name="aQ(r)" id="aQ(r)" :disabled="!context.form['aQ(r)']" />
                       </div>
                     </div>
                   </div>
@@ -178,7 +178,7 @@
                     </label>
                     <div class="mt-1 sm:mt-0 sm:col-span-2">
                       <div class="mt-1 relative rounded-md shadow-sm max-w-xs">
-                        <input v-model="context.form['kqu0(r)']" type="text" name="kqu0(r)" id="kqu0(r)" class="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
+                        <custom-input v-model="context.form['kqu0(r)']" type="text" name="kqu0(r)" id="kqu0(r)" :disaled="!context.form['kqu0(r)']"/>
                       </div>
                     </div>
                   </div>
@@ -192,7 +192,7 @@
                     </label>
                     <div class="mt-1 sm:mt-0 sm:col-span-2">
                       <div class="mt-1 relative rounded-md shadow-sm max-w-xs">
-                        <input v-model="context.form['bQ(r)']" type="text" name="bQ(r)" id="bQ(r)" class="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
+                        <custom-input v-model="context.form['bQ(r)']" type="text" name="bQ(r)" id="bQ(r)" :disabled="!context.form['bQ(r)']" />
                       </div>
                     </div>
                   </div>
@@ -202,7 +202,7 @@
                     </label>
                     <div class="mt-1 sm:mt-0 sm:col-span-2">
                       <div class="mt-1 relative rounded-md shadow-sm max-w-xs">
-                        <input v-model="context.form['kqu1(r)']" type="text" name="kqu1(r)" id="kqu1(r)" class="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
+                        <custom-input v-model="context.form['kqu1(r)']" type="text" name="kqu1(r)" id="kqu1(r)" :disabled="!context.form['kqu1(r)']" />
                       </div>
                     </div>
                   </div>
@@ -218,7 +218,7 @@
                     </label>
                     <div class="mt-1 sm:mt-0 sm:col-span-2">
                       <div class="mt-1 relative rounded-md shadow-sm max-w-xs">
-                        <input v-model="context.form['kqu(r)']" type="text" name="kqu(r)" id="kqu(r)" class="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
+                        <custom-input v-model="context.form['kqu(r)']" type="text" name="kqu(r)" id="kqu(r)" :disabled="!context.form['kqu(r)']" />
                       </div>
                     </div>
                   </div>
@@ -249,6 +249,7 @@ import {
 } from 'vue-class-component';
 import { toRefs, reactive } from 'vue';
 import CustomSelect from '@/components/CustomSelect.vue';
+import CustomInput from '@/components/CustomInput.vue';
 
 interface State {
   selectedTab: string;
@@ -297,6 +298,14 @@ const useContext = () => {
     },
     systemTypes: [
       {
+        value: '',
+        name: '',
+      },
+      {
+        value: 'wind_disabled',
+        name: 'wind_disabled',
+      },
+      {
         value: '0',
         name: 'AC',
       },
@@ -306,6 +315,14 @@ const useContext = () => {
       },
     ],
     techonologies: [
+      {
+        value: '',
+        name: '',
+      },
+      {
+        value: 'wind_disabled',
+        name: 'wind_disabled',
+      },
       {
         value: '0',
         name: '3PH-\'D\'',
@@ -349,6 +366,7 @@ const useContext = () => {
 @Options({
   components: {
     CustomSelect,
+    CustomInput,
   },
 })
 export default class TypLod extends Vue.with(Props) {
@@ -360,13 +378,17 @@ export default class TypLod extends Vue.with(Props) {
     this.context.form = {
       ...this.context.form,
       ...Object.keys(newForm).reduce((acc: any, key: string) => {
-        acc[key] = newForm[key] === -1 || !newForm[key] ? '0' : newForm[key];
+        acc[key] = newForm[key] === -1 || !newForm[key] ? 'wind_disabled' : newForm[key];
         return acc;
       }, {}),
     };
   }
 
   saveTypes() :void {
+    this.context.form = Object.keys(this.context.form).reduce((acc: any, key: string) => {
+      acc[key] = this.context.form[key] === 'wind_disabled' ? '' : this.context.form[key];
+      return acc;
+    }, {});
     const newTypes = JSON.parse(JSON.stringify({
       ...this.context.form,
       'ID(a:40)': +this.context.form['ID(a:40)'],

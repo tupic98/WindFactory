@@ -48,7 +48,7 @@
                     </label>
                     <div class="mt-1 sm:mt-0 sm:col-span-2">
                       <div class="mt-1 relative rounded-md shadow-sm max-w-xs">
-                        <input v-model="context.form['Inom(r)']" type="text" name="Inom(r)" id="Inom(r)" class="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
+                        <custom-input v-model="context.form['Inom(r)']" type="text" name="Inom(r)" id="Inom(r)" :diabled="!context.form['Inom(r)']" />
                         <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
                           <span class="text-gray-500 sm:text-sm">
                             kA
@@ -67,7 +67,7 @@
                     </label>
                     <div class="mt-1 sm:mt-0 sm:col-span-2 relative">
                       <div class="mt-1 relative rounded-md shadow-sm max-w-xs">
-                        <input v-model="context.form['t_open(r)']" type="text" name="t_open(r)" id="t_open(r)" class="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
+                        <custom-input v-model="context.form['t_open(r)']" type="text" name="t_open(r)" id="t_open(r)" :disabled="!context.form['t_open(r)']" />
                         <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
                           <span class="text-gray-500 sm:text-sm">
                             s
@@ -102,7 +102,7 @@
                     </label>
                     <div class="mt-1 sm:mt-0 sm:col-span-2">
                       <div class="mt-1 relative rounded-md shadow-sm max-w-xs">
-                        <input v-model="context.form['R_on(r)']" type="text" name="R_on(r)" id="R_on(r)" class="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
+                        <custom-input v-model="context.form['R_on(r)']" type="text" name="R_on(r)" id="R_on(r)" :disabled="!context.form['R_on(r)']" />
                         <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
                           <span class="text-gray-500 sm:text-sm">
                             Ohm
@@ -121,7 +121,7 @@
                     </label>
                     <div class="mt-1 sm:mt-0 sm:col-span-2 relative">
                       <div class="mt-1 relative rounded-md shadow-sm max-w-xs">
-                        <input v-model="context.form['X_on(r)']" type="text" name="X_on(r)" id="X_on(r)" class="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
+                        <custom-input v-model="context.form['X_on(r)']" type="text" name="X_on(r)" id="X_on(r)" :disabled="!context.form['X_on(r)']" />
                         <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
                           <span class="text-gray-500 sm:text-sm">
                             Ohm
@@ -156,6 +156,7 @@ import {
   Options, Vue, setup, prop,
 } from 'vue-class-component';
 import { toRefs, reactive } from 'vue';
+import CustomInput from '@/components/CustomInput.vue';
 
 interface State {
   selectedTab: string;
@@ -193,7 +194,11 @@ const useContext = () => {
   };
 };
 
-@Options({})
+@Options({
+  components: {
+    CustomInput,
+  },
+})
 export default class TypSwitch extends Vue.with(Props) {
   context = setup(() => useContext())
 
@@ -203,13 +208,17 @@ export default class TypSwitch extends Vue.with(Props) {
     this.context.form = {
       ...this.context.form,
       ...Object.keys(newForm).reduce((acc: any, key: string) => {
-        acc[key] = newForm[key] === -1 || !newForm[key] ? '0' : newForm[key];
+        acc[key] = newForm[key] === -1 || !newForm[key] ? 'wind_disabled' : newForm[key];
         return acc;
       }, {}),
     };
   }
 
   saveTypes(): void {
+    this.context.form = Object.keys(this.context.form).reduce((acc: any, key: string) => {
+      acc[key] = this.context.form[key] === 'wind_disabled' ? '' : this.context.form[key];
+      return acc;
+    }, {});
     const newTypes = JSON.parse(JSON.stringify({
       ...this.context.form,
       'ID(a:40)': +this.context.form['ID(a:40)'],
