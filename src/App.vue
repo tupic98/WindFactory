@@ -18,7 +18,7 @@ import Navbar from '@/components/Navbar.vue';
 })
 export default class App extends Vue {
   mounted() {
-    this.$router.push('/');
+    this.$router.replace('/');
     window.onbeforeunload = function () {
       return 'Seguro que quieres recargar? Los cambios hechos hasta el momento se perderán y empezaras de nuevo';
     };
