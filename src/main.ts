@@ -13,7 +13,7 @@ const app = createApp(App);
 
 const axiosInstance = axios.create({
   proxy: false,
-  baseURL: process.env.API_URL,
+  baseURL: process.env.VUE_APP_API_URL,
 });
 
 app.use(store).use(router).use(VueAxios, axiosInstance)
