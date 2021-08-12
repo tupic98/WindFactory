@@ -28,7 +28,7 @@
           Highlighted: "text-white bg-indigo-600", Not Highlighted: "text-gray-900"
         -->
         <template v-for="(item, i) in items" :key="i">
-          <li v-if="item.value" class="text-gray-900 cursor-default select-none relative py-2 pl-3 pr-9 group hover:text-white hover:bg-indigo-600 transition duration-100 ease-in-out" :id="`listbox-option-${i}`" role="option" @click.prevent="updateValue(item.value)">
+          <li v-if="item.value && item.value !== 'wind_disabled'" class="text-gray-900 cursor-default select-none relative py-2 pl-3 pr-9 group hover:text-white hover:bg-indigo-600 transition duration-100 ease-in-out" :id="`listbox-option-${i}`" role="option" @click.prevent="updateValue(item.value)">
           <!-- Selected: "font-semibold", Not Selected: "font-normal" -->
             <span class="font-normal block truncate" :class="{ 'font-semibold': item.value === modelValue }">
               {{ item.name }}
@@ -116,7 +116,7 @@ export default class CustomSelect extends Vue.with(Props) {
   context = setup(() => useContext());
 
   toggleSelect(): void {
-    if (!this.disabled) {
+    if (this.modelValue !== 'wind_disabled' || !this.disabled) {
       this.context.show = !this.context.show;
     }
   }
