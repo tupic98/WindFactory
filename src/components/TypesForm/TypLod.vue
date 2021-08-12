@@ -62,7 +62,7 @@
                     </label>
                     <div class="mt-1 sm:mt-0 sm:col-span-2">
                       <div class="mt-1 relative rounded-md shadow-sm max-w-xs">
-                        <custom-select v-model="context.form['phtech(i)']" name="phtech(i)" :items="context.techonologies" :disabled="!context.form['phtech(i)']"/>
+                        <custom-select v-model="context.form['phtech(i)']" name="phtech(i)" :items="context.technologies" :disabled="!context.form['phtech(i)']"/>
                       </div>
                     </div>
                   </div>
@@ -307,14 +307,14 @@ const useContext = () => {
       },
       {
         value: '0',
-        name: 'AC',
+        name: 'AC (0)',
       },
       {
         value: '1',
-        name: 'DC',
+        name: 'DC (1)',
       },
     ],
-    techonologies: [
+    technologies: [
       {
         value: '',
         name: '',
@@ -325,35 +325,35 @@ const useContext = () => {
       },
       {
         value: '0',
-        name: '3PH-\'D\'',
-      },
-      {
-        value: '1',
-        name: '3PH PH-E',
+        name: '3PH-\'D\' (0)',
       },
       {
         value: '2',
-        name: '3PH-\'YN\'',
+        name: '3PH PH-E (2)',
       },
       {
         value: '3',
-        name: '2PH PH-E',
+        name: '3PH-\'YN\' (3)',
       },
       {
         value: '4',
-        name: '2PH-\'YN\'',
+        name: '2PH PH-E (4)',
       },
       {
         value: '5',
-        name: '1PH PH-PH',
-      },
-      {
-        value: '6',
-        name: '1PH PH-N',
+        name: '2PH-\'YN\' (5)',
       },
       {
         value: '7',
-        name: '1PH PH-E',
+        name: '1PH PH-PH (7)',
+      },
+      {
+        value: '8',
+        name: '1PH PH-N (8)',
+      },
+      {
+        value: '9',
+        name: '1PH PH-E (9)',
       },
     ],
   });
