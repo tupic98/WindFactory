@@ -38,6 +38,8 @@ import { useStore } from 'vuex';
 import TypSwitch from '@/components/TypesForm/TypSwitch.vue';
 import TypLod from '@/components/TypesForm/TypLod.vue';
 import TypLne from '@/components/TypesForm/TypLne.vue';
+import TypVoltreg from '@/components/TypesForm/TypVoltreg.vue';
+import TypFuse from '@/components/TypesForm/TypFuse.vue';
 
 const useContext = () => {
   const store = useStore();
@@ -53,6 +55,8 @@ const useContext = () => {
     TypSwitch,
     TypLod,
     TypLne,
+    TypVoltreg,
+    TypFuse,
   },
 })
 export default class TypesForm extends Vue {
