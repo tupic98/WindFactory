@@ -620,7 +620,11 @@ const useContext = () => {
       },
       {
         value: '0',
-        name: 'Copper',
+        name: 'AC (0)',
+      },
+      {
+        value: '1',
+        name: 'DC (1)',
       },
     ],
     materials: [
@@ -634,15 +638,15 @@ const useContext = () => {
       },
       {
         value: 'As',
-        name: 'ACSR',
+        name: 'ACSR (As)',
       },
       {
         value: 'Al',
-        name: 'Aluminio',
+        name: 'Aluminio (Al)',
       },
       {
         value: 'Cu',
-        name: 'Cobre',
+        name: 'Cobre (Cu)',
       },
     ],
     cableTypes: [
@@ -656,11 +660,11 @@ const useContext = () => {
       },
       {
         value: '0',
-        name: 'Cable',
+        name: 'Cable (0)',
       },
       {
         value: '1',
-        name: 'Overhead Line',
+        name: 'Overhead Line (1)',
       },
     ],
     phases: [
@@ -674,15 +678,15 @@ const useContext = () => {
       },
       {
         value: '0',
-        name: '1',
+        name: '1 (0)',
       },
       {
         value: '1',
-        name: '2',
+        name: '2 (1)',
       },
       {
         value: '2',
-        name: '3',
+        name: '3 (2)',
       },
     ],
     numberOfNeutrals: [
@@ -696,11 +700,11 @@ const useContext = () => {
       },
       {
         value: '0',
-        name: '0',
+        name: '0 (0)',
       },
       {
         value: '1',
-        name: '1',
+        name: '1 (1)',
       },
     ],
   });
