@@ -40,6 +40,7 @@ import TypLod from '@/components/TypesForm/TypLod.vue';
 import TypLne from '@/components/TypesForm/TypLne.vue';
 import TypVoltreg from '@/components/TypesForm/TypVoltreg.vue';
 import TypFuse from '@/components/TypesForm/TypFuse.vue';
+import TypTr2 from '@/components/TypesForm/TypTr2.vue';
 
 const useContext = () => {
   const store = useStore();
@@ -57,6 +58,7 @@ const useContext = () => {
     TypLne,
     TypVoltreg,
     TypFuse,
+    TypTr2,
   },
 })
 export default class TypesForm extends Vue {
